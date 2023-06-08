@@ -59,7 +59,7 @@ const saveCurrentScore = function () {
         totalScores[activePlayer] += currentScore;
         document.getElementById(`score--${activePlayer}`).textContent = totalScores[activePlayer];
         //   If total score >= 100 - player won, if not - switch player
-        if (totalScores[activePlayer] >= 20) {
+        if (totalScores[activePlayer] >= 100) {
             isPlaying = false;
             document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
             document.querySelector(`.player--${activePlayer}`).classList.remove('player--active')
@@ -72,3 +72,31 @@ const saveCurrentScore = function () {
 };
 
 btnHold.addEventListener('click', saveCurrentScore);
+
+
+//   New game / restart game
+const startNewGame = function () {
+    isPlaying = true;
+    //   Reset score
+    totalScores[0] = 0;
+    totalScores[1] = 0;
+    document.getElementById('score--0').textContent = totalScores[0];
+    document.getElementById('score--1').textContent = totalScores[1];
+
+    //   Reset current score
+    currentScore = 0;
+
+    //   Hidden dice
+    dice.classList.add('hidden');
+
+    //   Add first player default
+    document.querySelector(`.player--${activePlayer}`).classList.remove('player--winner');
+    document.getElementById(`current--${activePlayer}`).textContent = currentScore;
+    activePlayer = 0;
+    player1.classList.remove('player--active');
+    player2.classList.remove('player--active');
+    player1.classList.add('player--active');
+}
+
+
+btnNew.addEventListener('click', startNewGame);
