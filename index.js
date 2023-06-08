@@ -37,7 +37,7 @@ const rollFunc = function() {
         const diceNumber = Math.trunc(Math.random() * 6) + 1;
         //   Display number on dice
         dice.classList.remove('hidden');
-        dice.src = `/assets/dice${diceNumber}.png`;
+        dice.src = `./assets/dice${diceNumber}.png`;
         //   If number = 1, switch player
         if (diceNumber !== 1) {
             currentScore += diceNumber;
